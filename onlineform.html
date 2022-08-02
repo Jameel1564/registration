@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="onlineform.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>REGISTRATION FORM</title>
+  </head>
+
+  <body>
+    <form class="container" action="confirmation.html" method="get" style="padding:2%">
+      <header>Registration</header>
+      <br>
+      <label style="box-shadow:none">
+        <strong>Enter your name</strong>
+      </label>
+      <div class="form-group form-row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="First Name" name="fname" pattern="[A-Za-z]{1,32}" title="First name should contain only letters" required>
+        </div>
+        <div class="col">
+          <input type="text" id="lName" class="form-control" placeholder="Last Name" name="Lname" title="Last name should contain only letters" pattern="[A-Za-z]{1,32}" required>
+        </div>
+      </div>
+
+      <label style="display:block">
+        <strong>Enter your location</strong>
+      </label>
+      <div class="form-group">
+        <input type="text" style="width:100%" name="street" placeholder="Street" required></input>
+      </div>
+      <div class="form-group">
+        <input type="text" style="width:100%" name="city" placeholder="City" autocomplete="on" list="list" required></input>
+      </div>
+      <datalist id="list">
+        <option>Port Louis</option>
+        <option>Grand Baie</option>
+        <option>Mahebourg</option>
+        <option>Flic en Flac</option>
+        <option>Curepipe</option>
+      </datalist>
+
+      <label>
+        <strong>Enter mobile number</strong>
+      </label>
+      <div class="form-group">
+        <input type="tel" style="width:50%" id="phone" name="phone" onclick="numbers()" placeholder="Mobile contact number" title="Phone number should be 5-xxx-xxxx" pattern="[5]-[0-9]{3}-[0-9]{4}" required>
+        <label id="number" for="phone">Format: 5-xxx-xxxx</label>
+      </div>
+
+      <label>
+        <strong>Enter Email address</strong>
+      </label>
+      <div class="form-group">
+        <input type="email" style="width:100%" name="email" placeholder="Email address" required></input>
+      </div>
+
+      <fieldset class="form-group form-check form-check-inline">
+        <legend class="col-form-label">
+          <b>Choose your gender</b>
+        </legend>
+        <div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="M" name="gender" value="1" required>
+            <label class="form-check-label" for="miss">M</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="F" name="gender" value="2">
+            <label class="form-check-label" for="miss">F</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <label for="DOB" style="display:block">
+        <b>Enter your date of birth</b>
+      </label>
+      <div class="form-group">
+        <input type="date" id="birthday1" name="birthday" min="1850-01-01" max="" onclick="changedate()" required>
+      </div>
+
+      <label>
+        <strong>Choose your nationality</strong>
+      </label>
+      <div class="form-group">
+        <select class="form-select" id="nationality" onchange="showtext()" aria-label="Default select example" required>
+          <option value="" disabled selected hidden>Nationality</option>
+          <option value="1">Mauritian</option>
+          <option value="2">Other</option>
+        </select>
+      </div>
+
+      <label id="national" style="display:none">
+        <strong>Enter your nationality</strong>
+      </label>
+      <div class="form-group">
+        <input id="field" style="display:none" type="text" placeholder="Enter your nationality" name="other" required></input>
+      </div>
+
+      <label id="Nic" style="display:none">
+        <strong>Enter your NIC</strong>
+      </label>
+      <div class="form-group">
+        <input id="NIC" style="display:none" type="text" pattern="" onclick="niccheck()" title="Example : NIC should be xxxxxxxxxxxxxx" placeholder="Enter NIC" name="nic" required></input>
+      </div>
+
+      <label id="Pass" style="display:none">
+        <strong>Enter your Passport Number</strong>
+      </label>
+      <div class="form-group">
+        <input id="passport" style="display:none" type="text" placeholder="Enter passport No" title="Passport format should be Pxxxxxxx" pattern="[P][a-zA-Z0-9]{7}" name="passport" required></input>
+      </div>
+
+      <label>
+        <strong>Enter password</strong>
+      </label>
+      <div class="form-group">
+        <input type="password" id="password" placeholder="Enter password" name="password" title="password should have no spaces, contains at least an uppercase letter and a number" pattern="(?=.*\d)(?=.*[A-Z]).{8}" required></input>
+      </div>
+
+      <label>
+        <strong>Enter password again</strong>
+      </label>
+      <div class="form-group">
+        <input type="password" id="confirmp" placeholder="Confirm password" name="conpassword" title="confirm password should be same as password" pattern="" onchange="confirm()" required></input>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+        <label class="form-check-label" for="flexCheckDefault"> I have read <a href="" style="display:inline">legal terms & conditions</a>
+        </label>
+      </div>
+      <br>
+
+      <!-- <div class="form-group">
+        <input type="submit">
+        <input type="reset" onclick="reseted()"></input>
+        </div> -->
+
+      <div class="button">
+        <input type="submit">
+      </div>
+
+      <div class="button">
+        <input type="reset" onclick="reseted()"></input>
+      </div>
+
+    </form>
+
+    <script>
+      function showtext(){
+      var select = document.getElementById("nationality");
+      var field1 = document.getElementById("field");
+      var field2 = document.getElementById("NIC");
+      var field3 = document.getElementById("passport");
+      var nation=document.getElementById("national");
+      var nicc=document.getElementById("Nic");
+      var pass=document.getElementById("Pass");
+          if (select.value == "2"){
+            field1.setAttribute("required", "");
+            field1.style.display="block";
+            field3.style.display="block";
+            field2.style.display="none";
+            field3.setAttribute("required", "");
+            field2.removeAttribute("required");
+            nation.style.display="block"
+            pass.style.display="block"
+            nicc.style.display="none"
+          }else{
+            field1.removeAttribute("required");
+                field1.style.display="none";
+                field2.style.display="block";
+                field3.style.display="none";
+                field2.setAttribute("required", "");
+                field3.removeAttribute("required");
+                nation.style.display="none"
+                pass.style.display="none"
+                nicc.style.display="block"
+          }
+      }
+
+      function changedate(){
+      var max1 = document.getElementById("birthday1");
+      var today = new Date();
+      var date = today.toLocaleString();
+      today.setDate(today.getDate()-6575)
+      if (today.getDate()>0&&today.getDate()<10){
+        if (today.getMonth()>0&&today.getMonth()<10){
+      var newdate=today.getFullYear()+"-0"+today.getMonth()+"-0"+today.getDate();
+      max1.setAttribute("max",newdate);
+      }else{
+        var newdate=today.getFullYear()+"-"+today.getMonth()+"-0"+today.getDate();
+      max1.setAttribute("max",newdate);
+      }
+      }else{
+        if (today.getMonth()>0&&today.getMonth()<10){
+      var newdate=today.getFullYear()+"-0"+today.getMonth()+"-"+today.getDate();
+      max1.setAttribute("max",newdate);
+      }else{
+        var newdate=today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate();
+      max1.setAttribute("max",newdate);
+      }
+      }
+      }
+
+      function niccheck(){
+      var nic2=document.getElementById("NIC");
+      var name2=((document.getElementById("lName").value).substring(0,1));//.toLowerCase();
+      var dob = ((document.getElementById("birthday1").value));
+      var date = dob.substring(8,9); //1
+      var month = dob.substring(5,6); //0
+      var year = dob.substring(2,3); //0
+      var date2 = dob.substring(9,10); //5
+      var month2 = dob.substring(6,7); //4
+      var year2 = dob.substring(3,4); //0
+      //var x = dob.substring(0,1); //2
+      //var y = dob.substring(1,2); //0
+      nic2.setAttribute("pattern","["+name2+"]"+"["+date+"]"+"["+date2+"]"+"["+month+"]"+"["+month2+"]"+"["+year+"]"+"["+year2+"]"+"[0-9]{7}")
+      }
+
+      function confirm(){
+      var password1=document.getElementById("password").value;
+      var password2=document.getElementById("confirmp")
+      var aa = password1.substring(0,1)
+      var ab = password1.substring(1,2)
+      var ac = password1.substring(2,3)
+      var ad = password1.substring(3,4)
+      var ae = password1.substring(4,5)
+      var af = password1.substring(5,6)
+      var ag = password1.substring(6,7)
+      var ah = password1.substring(7,8)
+      password2.setAttribute("pattern","["+aa+"]"+"["+ab+"]"+"["+ac+"]"+"["+ad+"]"+"["+ae+"]"+"["+af+"]"+"["+ag+"]"+"["+ah+"]")
+      console.log(password2.getAttribute("pattern"))
+      }
+
+      function numbers(){
+      var numb=document.getElementById("number")
+      numb.style.display="inline"
+      }
+
+      function reseted(){
+        var field1 = document.getElementById("field");
+        var field2 = document.getElementById("NIC");
+        var field3 = document.getElementById("passport");
+        var nation=document.getElementById("national");
+        var nicc=document.getElementById("Nic");
+        var pass=document.getElementById("Pass");
+      alert('RESETED')
+      field1.style.display="none";
+      field2.style.display="none";
+      field3.style.display="none";
+      nation.style.display="none";
+      nicc.style.display="none";
+      pass.style.display="none";
+      }
+
+    </script>
+  </body>
+</html>
